@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ubuntu开机黑屏解决方案</title>
-    <url>/2021/02/18/Ubuntu%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<p><strong>前言</strong><br><strong>前几日开始了Ubuntu的学习，因为以前有尝试过虚拟机，于是直接打开VMware，打开后Ubuntu直接黑屏，解决后得此总结</strong></p>
+    <title>Xshell以root身份登录</title>
+    <url>/2021/02/18/Xshell%E4%BB%A5root%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95/</url>
+    <content><![CDATA[<p><strong>前言</strong><br><strong>Xshell以及Xftp以root身份登录，链接Linux</strong></p>
 <p>（有问题欢迎邮箱讨论）</p>
 <a id="more"></a>
 
-<p>#方案一<br>第一种情况，黑屏后重启电脑，打开vmware，在上栏中点击虚拟机，再点击设置，<br>在显示器栏选择关闭3D加速器，关闭vmware重新打开即可</p>
-<p>#方案二<br>检查是不是硬件问题，如果光盘启动不正常，在官网重新下载映像即可</p>
-<p>#方案三<br>启动时按 shift 键出现grub菜单,选择其他内核版本启动，正常启动,换版本的映<br>像即可</p>
-<p>#方案四<br>图形界面程序损坏，可能是在更新内核或者安装软件的时候，xorg相关的文件丢失<br>解决方法： 黑屏后按Ctrl+ALT+F5（或者Ctrl+ALT+F1~F6）进入命令行界面，输入<br>账号、密码，登陆。 执行完以上操作，Ubuntu即可正常启动</p>
-<p>#方案五<br>命令行窗口—输入netsh winsock reset—重启计算机，这里的命令行窗口是想要以<br>管理员的身份才行</p>
-<p>#方案六<br>以上方法都用了我的问题依旧没有解决，最后发现原来虚拟打印机被禁用，虽然不<br>太清楚打印机与显示有啥关联，但是就是这样解决的，打开上栏编辑，首选项点击<br>设备，更改设置启动虚拟打印机即可</p>
+<p>#1 切换到 root<br>su root<br>#2 先备份一下配置文件<br>cp /etc/ssh/sshd_config /etc/ssh/sshd_config.2<br>#3 编译sshd的配置文件<br>gedit /etc/ssh/sshd_config<br>把下面这一行<br>PermitRootLogin prohibit-password<br>改成:<br>PermitRootLogin yes<br>注意前面不要加#号<br>#4 重启ssh服务<br>service sshd restart</p>
 <p><strong>Mnsx</strong></p>
 <hr>
 ]]></content>
@@ -39,13 +34,35 @@
       </categories>
   </entry>
   <entry>
-    <title>Xshell以root身份登录</title>
-    <url>/2021/02/18/Xshell%E4%BB%A5root%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95/</url>
-    <content><![CDATA[<p><strong>前言</strong><br><strong>Xshell以及Xftp以root身份登录，链接Linux</strong></p>
+    <title>Ubuntu开机黑屏解决方案</title>
+    <url>/2021/02/18/Ubuntu%E5%BC%80%E6%9C%BA%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<p><strong>前言</strong><br><strong>前几日开始了Ubuntu的学习，因为以前有尝试过虚拟机，于是直接打开VMware，打开后Ubuntu直接黑屏，解决后得此总结</strong></p>
 <p>（有问题欢迎邮箱讨论）</p>
 <a id="more"></a>
 
-<p>#1 切换到 root<br>su root<br>#2 先备份一下配置文件<br>cp /etc/ssh/sshd_config /etc/ssh/sshd_config.2<br>#3 编译sshd的配置文件<br>gedit /etc/ssh/sshd_config<br>把下面这一行<br>PermitRootLogin prohibit-password<br>改成:<br>PermitRootLogin yes<br>注意前面不要加#号<br>#4 重启ssh服务<br>service sshd restart</p>
+<p>#方案一<br>第一种情况，黑屏后重启电脑，打开vmware，在上栏中点击虚拟机，再点击设置，<br>在显示器栏选择关闭3D加速器，关闭vmware重新打开即可</p>
+<p>#方案二<br>检查是不是硬件问题，如果光盘启动不正常，在官网重新下载映像即可</p>
+<p>#方案三<br>启动时按 shift 键出现grub菜单,选择其他内核版本启动，正常启动,换版本的映<br>像即可</p>
+<p>#方案四<br>图形界面程序损坏，可能是在更新内核或者安装软件的时候，xorg相关的文件丢失<br>解决方法： 黑屏后按Ctrl+ALT+F5（或者Ctrl+ALT+F1~F6）进入命令行界面，输入<br>账号、密码，登陆。 执行完以上操作，Ubuntu即可正常启动</p>
+<p>#方案五<br>命令行窗口—输入netsh winsock reset—重启计算机，这里的命令行窗口是想要以<br>管理员的身份才行</p>
+<p>#方案六<br>以上方法都用了我的问题依旧没有解决，最后发现原来虚拟打印机被禁用，虽然不<br>太清楚打印机与显示有啥关联，但是就是这样解决的，打开上栏编辑，首选项点击<br>设备，更改设置启动虚拟打印机即可</p>
+<p><strong>Mnsx</strong></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Ubuntu-linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>搭建fpt服务器</title>
+    <url>/2021/02/18/%E6%90%AD%E5%BB%BAfpt%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<p><strong>前言</strong><br><strong>主要介绍fpt文件传输协议，以及Linux和windows服务器搭建</strong></p>
+<p>（有问题欢迎邮箱讨论）</p>
+<a id="more"></a>
+
+<p>##一、何为ftp<br>FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务， FTP是File Transfer Protocol，顾名思义，就是专门用来传输文件的协议，简单地说，支持FTP协议的服务器就是FTP服务器。</p>
+<p>##二、ftp服务器搭建<br>#1.windows<br>安装filezilla</p>
+<p>#2.Linux<br>sudo apt install vsftpd<br>gedit /etc/vsftpd.conf<br>在文本编辑器里，找到这一行，#write_enable=YES，并去掉这一行前面的#号<br>sudo service vsftpd start<br>sudo ufw disable</p>
 <p><strong>Mnsx</strong></p>
 <hr>
 ]]></content>
@@ -64,23 +81,6 @@
 <p>##二、搭建ssh服务器<br>#1.Linux</p>
 <p>sudo apt install openssh-server<br>sudo service ssh start<br>sudo ufw disable</p>
 <p>#2.windows<br>安装xshell、xftp</p>
-<p><strong>Mnsx</strong></p>
-<hr>
-]]></content>
-      <categories>
-        <category>Ubuntu-linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>搭建fpt服务器</title>
-    <url>/2021/02/18/%E6%90%AD%E5%BB%BAfpt%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
-    <content><![CDATA[<p><strong>前言</strong><br><strong>主要介绍fpt文件传输协议，以及Linux和windows服务器搭建</strong></p>
-<p>（有问题欢迎邮箱讨论）</p>
-<a id="more"></a>
-
-<p>##一、何为ftp<br>FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务， FTP是File Transfer Protocol，顾名思义，就是专门用来传输文件的协议，简单地说，支持FTP协议的服务器就是FTP服务器。</p>
-<p>##二、ftp服务器搭建<br>#1.windows<br>安装filezilla</p>
-<p>#2.Linux<br>sudo apt install vsftpd<br>gedit /etc/vsftpd.conf<br>在文本编辑器里，找到这一行，#write_enable=YES，并去掉这一行前面的#号<br>sudo service vsftpd start<br>sudo ufw disable</p>
 <p><strong>Mnsx</strong></p>
 <hr>
 ]]></content>
