@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>搭建ssh服务器</title>
-    <url>/2021/02/18/%E6%90%AD%E5%BB%BAssh%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
-    <content><![CDATA[<p><strong>前言</strong><br><strong>主要介绍ssh协议以及搭建ssh服务器</strong></p>
+    <title>Xshell以root身份登录</title>
+    <url>/2021/02/18/Xshell%E4%BB%A5root%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95/</url>
+    <content><![CDATA[<p><strong>前言</strong><br><strong>Xshell以及Xftp以root身份登录，链接Linux</strong></p>
 <p>（有问题欢迎邮箱讨论）</p>
 <a id="more"></a>
 
-<p>##一、何为sftp<br>在计算机领域，SSH文件传输协议是一数据流连接，提供文件访问、传输和管理功能的网络传输协议。</p>
-<p>##二、搭建ssh服务器<br>#1.Linux</p>
-<p>sudo apt install openssh-server<br>sudo service ssh start<br>sudo ufw disable</p>
-<p>#2.windows<br>安装xshell、xftp</p>
+<p>#1 切换到 root<br>su root<br>#2 先备份一下配置文件<br>cp /etc/ssh/sshd_config /etc/ssh/sshd_config.2<br>#3 编译sshd的配置文件<br>gedit /etc/ssh/sshd_config<br>把下面这一行<br>PermitRootLogin prohibit-password<br>改成:<br>PermitRootLogin yes<br>注意前面不要加#号<br>#4 重启ssh服务<br>service sshd restart</p>
 <p><strong>Mnsx</strong></p>
 <hr>
 ]]></content>
@@ -80,6 +77,24 @@
       </categories>
   </entry>
   <entry>
+    <title>搭建ssh服务器</title>
+    <url>/2021/02/18/%E6%90%AD%E5%BB%BAssh%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    <content><![CDATA[<p><strong>前言</strong><br><strong>主要介绍ssh协议以及搭建ssh服务器</strong></p>
+<p>（有问题欢迎邮箱讨论）</p>
+<a id="more"></a>
+
+<p>##一、何为sftp<br>在计算机领域，SSH文件传输协议是一数据流连接，提供文件访问、传输和管理功能的网络传输协议。</p>
+<p>##二、搭建ssh服务器<br>#1.Linux</p>
+<p>sudo apt install openssh-server<br>sudo service ssh start<br>sudo ufw disable</p>
+<p>#2.windows<br>安装xshell、xftp</p>
+<p><strong>Mnsx</strong></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Ubuntu-linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>搭建fpt服务器</title>
     <url>/2021/02/18/%E6%90%AD%E5%BB%BAfpt%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
     <content><![CDATA[<p><strong>前言</strong><br><strong>主要介绍fpt文件传输协议，以及Linux和windows服务器搭建</strong></p>
@@ -89,21 +104,6 @@
 <p>##一、何为ftp<br>FTP服务器是在互联网上提供文件存储和访问服务的计算机，它们依照FTP协议提供服务， FTP是File Transfer Protocol，顾名思义，就是专门用来传输文件的协议，简单地说，支持FTP协议的服务器就是FTP服务器。</p>
 <p>##二、ftp服务器搭建<br>#1.windows<br>安装filezilla</p>
 <p>#2.Linux<br>sudo apt install vsftpd<br>gedit /etc/vsftpd.conf<br>在文本编辑器里，找到这一行，#write_enable=YES，并去掉这一行前面的#号<br>sudo service vsftpd start<br>sudo ufw disable</p>
-<p><strong>Mnsx</strong></p>
-<hr>
-]]></content>
-      <categories>
-        <category>Ubuntu-linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Xshell以root身份登录</title>
-    <url>/2021/02/18/Xshell%E4%BB%A5root%E8%BA%AB%E4%BB%BD%E7%99%BB%E5%BD%95/</url>
-    <content><![CDATA[<p><strong>前言</strong><br><strong>Xshell以及Xftp以root身份登录，链接Linux</strong></p>
-<p>（有问题欢迎邮箱讨论）</p>
-<a id="more"></a>
-
-<p>#1 切换到 root<br>su root<br>#2 先备份一下配置文件<br>cp /etc/ssh/sshd_config /etc/ssh/sshd_config.2<br>#3 编译sshd的配置文件<br>gedit /etc/ssh/sshd_config<br>把下面这一行<br>PermitRootLogin prohibit-password<br>改成:<br>PermitRootLogin yes<br>注意前面不要加#号<br>#4 重启ssh服务<br>service sshd restart</p>
 <p><strong>Mnsx</strong></p>
 <hr>
 ]]></content>
